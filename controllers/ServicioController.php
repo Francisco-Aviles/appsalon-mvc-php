@@ -8,7 +8,7 @@ class ServicioController {
 
     public static function index(Router $router){
         if(session_status() === PHP_SESSION_NONE) session_start();
-        isAuth();
+        isAdmin();
         $nombre = $_SESSION['nombre'] ?? '';
         $servicios = Servicio::all();
         $router->render('/servicios/index', [
@@ -19,7 +19,7 @@ class ServicioController {
 
     public static function crear(Router $router){
         if(session_status() === PHP_SESSION_NONE) session_start();
-        isAuth();
+        isAdmin();
         $nombre = $_SESSION['nombre'] ?? '';
 
         $servicio = new Servicio;
@@ -45,7 +45,7 @@ class ServicioController {
 
     public static function actualizar(Router $router){
         if(session_status() === PHP_SESSION_NONE) session_start();
-        isAuth();
+        isAdmin();
         $nombre = $_SESSION['nombre'] ?? '';
         $alertas = [];
         $id = $_GET['id'] ?? null;
@@ -74,7 +74,7 @@ class ServicioController {
     }
     public static function eliminar(){
         if(session_status() === PHP_SESSION_NONE) session_start();
-        isAuth();
+        isAdmin();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $_POST['id'];
