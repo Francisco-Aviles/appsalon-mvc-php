@@ -35,3 +35,18 @@ function isAdmin(){
         exit;
     }
 }
+
+function isLogin(){
+    //Devuelve true si ya esta logueado el usurio
+    if(isset($_SESSION['login'])){
+        //Verificamos si es admin
+        if(isset($_SESSION['admin'])){
+            header('Location: /admin');
+            exit;
+        }else{
+            //Regresa a la cita sino es admin
+            header('Location: /cita');
+            exit;
+        }
+    }
+}

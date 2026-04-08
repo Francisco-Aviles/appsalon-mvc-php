@@ -9,6 +9,7 @@ use MVC\Router;
 class LoginController {
     public static function login(Router $router){
         $alertas = [];
+        isLogin();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $auth = new Usuario($_POST);
@@ -66,6 +67,7 @@ class LoginController {
 
     public static function olvide(Router $router){
         $alertas = [];
+        isLogin();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $auth = new Usuario($_POST);
@@ -100,6 +102,7 @@ class LoginController {
     }
 
     public static function recuperar(Router $router){
+        isLogin();
         /*para no perder la refencia del token en la url en la vista del formulario no se le agrega el action */
         $alertas = [];
         $error = false;
@@ -142,6 +145,7 @@ class LoginController {
     }
 
     public static function crear(Router $router){
+        isLogin();
         $usuario = new Usuario;
         $alertas = Usuario::getAlertas();
 
@@ -187,6 +191,7 @@ class LoginController {
     }
 
     public static function confirmar(Router $router) {
+        isLogin();
         $alertas = [];
         //Cuando no este presente la variable del token, agregamos ese valor solo para que no valide y devuelva el mensaje de error
         $token = s($_GET['token'] ?? 'nqa');
@@ -212,6 +217,7 @@ class LoginController {
     }
 
     public static function mensaje(Router $router){
+        isLogin();
         $router->render('auth/mensaje');
     }
 }
