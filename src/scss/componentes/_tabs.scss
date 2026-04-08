@@ -7,7 +7,7 @@
     // justify-content: space-evenly;
     // align-items: center;
     // margin: 2.5rem 0;
-    @include m.tablet{
+    @include m.desktop{
         display: flex;
     }
 
